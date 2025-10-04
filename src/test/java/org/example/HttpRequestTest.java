@@ -23,7 +23,7 @@ public class HttpRequestTest {
 
     @Test
     void getAddressBook() {
-        String url = "http://localhost:8080/addressbooks";
+        String url = "http://localhost:"+port+"/addressbooks";
         String response = this.restTemplate.getForEntity(url, String.class).getBody();
         HttpStatusCode code = this.restTemplate.getForEntity(url, String.class).getStatusCode();
         System.out.println(code);
