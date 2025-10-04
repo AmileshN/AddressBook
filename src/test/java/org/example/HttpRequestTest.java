@@ -7,6 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
+
+import java.net.URI;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HttpRequestTest {
@@ -29,9 +32,9 @@ public class HttpRequestTest {
         Assertions.assertEquals(0, ad.getBuddies().size());
 
         HttpEntity<BuddyInfo> request2 = new HttpEntity<>(new BuddyInfo("John", "1234567890"));
-        this.restTemplate.postForObject(url+"/"+ad.getId()+"/buddies", request2, BuddyInfo.class);
+        String resp = this.restTemplate.postForObject(url+"/"+ad.getId()+"/buddies", request2, String.class);
+        System.out.println(resp);
 
-        url = "http://localhost:"+port+"/addressbooks";
         response = this.restTemplate.getForEntity(url, String.class).getBody();
         System.out.println(response);
         assert(response.contains("John"));
