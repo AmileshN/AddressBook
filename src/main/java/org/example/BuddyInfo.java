@@ -14,6 +14,8 @@ public class BuddyInfo {
 
     private String phoneNumber;
 
+    private String address;
+
     @ManyToOne
     @JsonIgnore
     private AddressBook addressBook;
@@ -24,6 +26,14 @@ public class BuddyInfo {
 
     public void setAddressBook(AddressBook addressBook) {
         this.addressBook = addressBook;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getId() {
@@ -37,11 +47,13 @@ public class BuddyInfo {
     public BuddyInfo(){
         this.name = "N/A";
         this.phoneNumber = "";
+        this.address = "N/A";
     }
 
-    public BuddyInfo(String name, String phoneNumber){
+    public BuddyInfo(String name, String phoneNumber, String address) {
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public String getName() {
@@ -53,7 +65,7 @@ public class BuddyInfo {
     }
 
     public static void main(String[] args) {
-        BuddyInfo buddy = new BuddyInfo("Homer","1234222222");
+        BuddyInfo buddy = new BuddyInfo("Homer","1234222222","742 Evergreen Terrace");
         System.out.println("Hello "+buddy.getName()+"!");
     }
 }

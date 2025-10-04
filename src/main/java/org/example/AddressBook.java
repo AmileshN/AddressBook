@@ -60,9 +60,9 @@ public class AddressBook {
 
     public static void main(String[] args) {
         AddressBook ad =  new AddressBook();
-        ad.addBuddy(new BuddyInfo("Adam", "131322313"));
-        ad.addBuddy(new BuddyInfo("Bianca","817177474"));
-        ad.addBuddy(new BuddyInfo("Charles","12313"));
+        ad.addBuddy(new BuddyInfo("Adam", "131322313", "123 Street"));
+        ad.addBuddy(new BuddyInfo("Bianca","817177474","456 Avenue"));
+        ad.addBuddy(new BuddyInfo("Charles","12313","789 Boulevard"));
         ad.printBuddies();
     }
 }

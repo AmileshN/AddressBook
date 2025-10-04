@@ -35,7 +35,7 @@ public class HttpRequestTest {
         Assertions.assertNotNull(ad);
         Assertions.assertEquals(0, ad.getBuddies().size());
 
-        HttpEntity<BuddyInfo> request2 = new HttpEntity<>(new BuddyInfo("John", "1234567890"));
+        HttpEntity<BuddyInfo> request2 = new HttpEntity<>(new BuddyInfo("John", "1234567890", "123 Main St"));
         String resp = this.restTemplate.postForObject(url+"/"+ad.getId()+"/buddies", request2, String.class);
         System.out.println(resp);
 
