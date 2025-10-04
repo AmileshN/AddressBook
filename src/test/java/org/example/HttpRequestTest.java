@@ -28,9 +28,13 @@ public class HttpRequestTest {
         Assertions.assertNotNull(ad);
         Assertions.assertEquals(0, ad.getBuddies().size());
 
+        HttpEntity<BuddyInfo> request2 = new HttpEntity<>(new BuddyInfo("John", "1234567890"));
+        this.restTemplate.postForObject(url+"/"+ad.getId()+"/buddies", request2, BuddyInfo.class);
+
         url = "http://localhost:"+port+"/addressbooks";
         response = this.restTemplate.getForEntity(url, String.class).getBody();
-        assert(response.contains("[]"));
+        System.out.println(response);
+        assert(response.contains("John"));
 
     }
 }
