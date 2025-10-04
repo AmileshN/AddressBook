@@ -10,9 +10,9 @@ public class JPATest {
 
     @Test
     public void performJPA(){
-        BuddyInfo buddy = new BuddyInfo("Ali", 987654321);
-        BuddyInfo buddy1 = new BuddyInfo("Bob", 654321);
-        BuddyInfo buddy2 = new BuddyInfo("Allison", 987);
+        BuddyInfo buddy = new BuddyInfo("Ali", "987654321");
+        BuddyInfo buddy1 = new BuddyInfo("Bob", "654321");
+        BuddyInfo buddy2 = new BuddyInfo("Allison", "987");
         AddressBook addressBook = new AddressBook();
         addressBook.addBuddy(buddy);
         addressBook.addBuddy(buddy1);
