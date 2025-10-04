@@ -27,7 +27,7 @@ public class AddressBookController {
     }
 
     @GetMapping("/{id}")
-    public AddressBook getAddressBookById(@PathVariable long id) {
+    public AddressBook getAddressBookById(@PathVariable("id") long id) {
         return addRepo.findById(id).orElse(null);
     }
 
