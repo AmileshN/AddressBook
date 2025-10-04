@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
@@ -24,7 +25,10 @@ public class HttpRequestTest {
     void getAddressBook() {
         String url = "http://localhost:8080/addressbooks";
         String response = this.restTemplate.getForEntity(url, String.class).getBody();
-        assert(response.contains("[]"));
+        HttpStatusCode code = this.restTemplate.getForEntity(url, String.class).getStatusCode();
+        System.out.println(code);
+        Assertions.assertEquals("[]",response);
+        Assertions.assertEquals(HttpStatusCode.valueOf(200), code);
 
         HttpEntity<AddressBook> request = new HttpEntity<>(new AddressBook());
         AddressBook ad = this.restTemplate.postForObject(url, request, AddressBook.class);
