@@ -89,7 +89,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.example.AddressBook</mainClass>
+                            <mainClass>org.example.AccessingAddressBook</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
