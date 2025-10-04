@@ -32,7 +32,7 @@ public class AddressBookController {
     }
 
     @PostMapping("/{id}/buddies")
-    public AddressBook addBuddyToAddressBook(@PathVariable long id, @RequestBody BuddyInfo buddy) {
+    public AddressBook addBuddyToAddressBook(@PathVariable("id") long id, @RequestBody BuddyInfo buddy) {
         AddressBook addressBook = addRepo.findById(id).orElseThrow();
         buddyRepo.save(buddy);
         addressBook.addBuddy(buddy);
@@ -42,7 +42,7 @@ public class AddressBookController {
     }
 
     @DeleteMapping("/{id}/buddies/{buddyId}")
-    public AddressBook removeBuddyFromAddressBook(@PathVariable long id, @PathVariable long buddyId) {
+    public AddressBook removeBuddyFromAddressBook(@PathVariable("id") long id, @PathVariable long buddyId) {
         AddressBook addressBook = addRepo.findById(id).orElseThrow();
         addressBook.removeBuddy(buddyRepo.findById(buddyId).orElseThrow());
         return addRepo.save(addressBook);
