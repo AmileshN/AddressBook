@@ -11,12 +11,15 @@ import org.springframework.http.HttpEntity;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HttpRequestTest {
 
+    @LocalServerPort
+    private int port;
+
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
     void getAddressBook() {
-        String url = "http://localhost:8080/addressbooks";
+        String url = "http://localhost:"+port+"/addressbooks";
         String response = this.restTemplate.getForEntity(url, String.class).getBody();
         assert(response.contains("[]"));
 
@@ -25,7 +28,7 @@ public class HttpRequestTest {
         Assertions.assertNotNull(ad);
         Assertions.assertEquals(0, ad.getBuddies().size());
 
-        url = "http://localhost:8080/addressbooks";
+        url = "http://localhost:"+port+"/addressbooks";
         response = this.restTemplate.getForEntity(url, String.class).getBody();
         assert(response.contains("[]"));
 
