@@ -8,9 +8,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
-
-import java.net.URI;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HttpRequestTest {
@@ -26,7 +23,7 @@ public class HttpRequestTest {
         String url = "http://localhost:"+port+"/addressbooks";
         String response = this.restTemplate.getForEntity(url, String.class).getBody();
         HttpStatusCode code = this.restTemplate.getForEntity(url, String.class).getStatusCode();
-        System.out.println(code);
+
         Assertions.assertEquals("[]",response);
         Assertions.assertEquals(HttpStatusCode.valueOf(200), code);
 
@@ -37,7 +34,7 @@ public class HttpRequestTest {
 
         HttpEntity<BuddyInfo> request2 = new HttpEntity<>(new BuddyInfo("John", "1234567890", "123 Main St"));
         String resp = this.restTemplate.postForObject(url+"/"+ad.getId()+"/buddies", request2, String.class);
-        System.out.println(resp);
+
 
         response = this.restTemplate.getForEntity(url, String.class).getBody();
         System.out.println(response);
