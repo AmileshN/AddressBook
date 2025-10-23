@@ -16,9 +16,8 @@ public class AddressBookController {
     }
 
     @PostMapping
-    public AddressBook createAddressBook(@RequestBody AddressBook addressBook) {
+    public AddressBook createAddressBook(@ModelAttribute AddressBook addressBook) {
         return addRepo.save(addressBook);
-
     }
 
     @GetMapping
@@ -32,7 +31,7 @@ public class AddressBookController {
     }
 
     @PostMapping("/{id}/buddies")
-    public AddressBook addBuddyToAddressBook(@PathVariable("id") long id, @RequestBody BuddyInfo buddy) {
+    public AddressBook addBuddyToAddressBook(@PathVariable("id") long id, @ModelAttribute("buddyInfo") BuddyInfo buddy) {
         AddressBook addressBook = addRepo.findById(id).orElseThrow();
         buddyRepo.save(buddy);
         addressBook.addBuddy(buddy);

@@ -8,6 +8,6 @@ public class RootController {
 
     @GetMapping("/")
     public String redirectToAddressbooks() {
-        return "redirect:/addressbooks";
+        return "redirect:/addressbooks/view";
     }
 }

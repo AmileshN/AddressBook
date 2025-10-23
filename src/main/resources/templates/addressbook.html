@@ -5,19 +5,29 @@
     <title th:text="'Address Book #' + ${addressBook.id}">Address Book</title>
 </head>
 <body>
+<form th:action="@{/addressbooks/view}" method="get">
+    <button>Back to Address Books</button>
+</form>
 <h1 th:text="'Address Book #' + ${addressBook.id}">Address Book</h1>
-
+<form action="#" th:action="@{/addressbooks/{id}/view(id=${addressBook.id})}" th:object="${buddyInfo}" method="post">
+    <p>Name: <input type="text" th:field="*{name}" />
+    <p>Phone Number: <input type="text" th:field="*{phoneNumber}" /> </p>
+    <p>Address: <input type="text" th:field="*{address}" /> </p>
+    <button type="submit">Add Buddy</button>
+</form>
 <table>
     <thead>
     <tr>
         <th>Name</th>
         <th>Phone Number</th>
+        <th>Address</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="buddy : ${buddies}">
         <td th:text="${buddy.name}">Name</td>
         <td th:text="${buddy.phoneNumber}">Phone</td>
+        <td th:text="${buddy.address}">Address</td>
     </tr>
     </tbody>
 </table>
