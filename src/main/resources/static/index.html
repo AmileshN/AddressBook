@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address Books</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<h1>AddressBooks</h1>
+<form id="createAddressBook" action="#" method="post">
+    <button type="submit">Create new addressBook</button>
+</form>
+<script>
+    document.getElementById("createAddressBook").addEventListener("submit", async (e) => {
+        e.preventDefault();
+    });
+</script>
+<div id="addressBookList">
+    <ul id="addressBooksUl">
+
+    </ul>
+</div>
+</body>
+</html>

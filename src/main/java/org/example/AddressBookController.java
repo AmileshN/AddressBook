@@ -2,6 +2,7 @@ package org.example;
 
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/addressbooks")
 public class AddressBookController {
@@ -16,7 +17,7 @@ public class AddressBookController {
     }
 
     @PostMapping
-    public AddressBook createAddressBook(@ModelAttribute AddressBook addressBook) {
+    public AddressBook createAddressBook(@RequestBody AddressBook addressBook) {
         return addRepo.save(addressBook);
     }
 
@@ -31,7 +32,7 @@ public class AddressBookController {
     }
 
     @PostMapping("/{id}/buddies")
-    public AddressBook addBuddyToAddressBook(@PathVariable("id") long id, @ModelAttribute("buddyInfo") BuddyInfo buddy) {
+    public AddressBook addBuddyToAddressBook(@PathVariable("id") long id, @RequestBody BuddyInfo buddy) {
         AddressBook addressBook = addRepo.findById(id).orElseThrow();
         buddyRepo.save(buddy);
         addressBook.addBuddy(buddy);
