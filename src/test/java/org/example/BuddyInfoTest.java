@@ -15,6 +15,6 @@ public class BuddyInfoTest {
     @Test
     public void getPhoneNumber() {
         BuddyInfo buddy2 = new BuddyInfo("Diana", "222222222", "101 Pine St");
-        assertEquals(222222222, buddy2.getPhoneNumber());
+        assertEquals("222222222", buddy2.getPhoneNumber());
     }
 }

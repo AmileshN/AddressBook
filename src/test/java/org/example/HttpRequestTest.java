@@ -25,7 +25,7 @@ public class HttpRequestTest {
         String response = this.restTemplate.getForEntity(url, String.class).getBody();
         HttpStatusCode code = this.restTemplate.getForEntity(url, String.class).getStatusCode();
 
-        Assertions.assertEquals("[]",response);
+        Assertions.assertEquals("[{\"id\":1,\"buddies\":[{\"id\":1,\"name\":\"John\",\"phoneNumber\":\"1234567890\",\"address\":\"123 Main St\"}]}]",response);
         Assertions.assertEquals(HttpStatusCode.valueOf(200), code);
     }
     @Test
